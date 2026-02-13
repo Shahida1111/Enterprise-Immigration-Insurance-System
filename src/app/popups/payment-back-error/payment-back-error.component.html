@@ -1,0 +1,17 @@
+<div class="modal-header">
+    <h5 id="ThankYou_h5_" class="modal-title">Remind!</h5>
+    <span class="cross-span" (click)="exit()">
+    <i id="ThankYou_i_" type="button" class="fa-solid fa-xmark icon-size" ></i>
+    </span>
+  </div>
+  <div class="modal-body m-body">
+    <p id="ThankYou_p_" *ngIf="isCustomer">Your payment link has expired. Please contact your insurance intermediary to request a new link.</p>
+    <p id="ThankYou_p_" *ngIf="!isCustomer">
+      This policy has already reached the payment stage and cannot be modified. To continue, please reload this policy within the portal
+      under 'My Transactions'.
+    </p>
+    <div class="col-md-2 offset-md-10">
+      <button id="ThankYou_button_exit" type="button" class="btn btn-danger custom-btn" (click)="exit()">Ok</button>
+    </div>
+  </div>
+  

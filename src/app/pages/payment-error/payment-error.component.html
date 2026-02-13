@@ -1,0 +1,37 @@
+<div class="overlay-black"></div>
+
+<app-nav-bar class="nav-bar"></app-nav-bar>
+
+<h3 class="subHeader contentMarginTop">Ouch</h3>
+
+<div class="container componentWrapper aboutMTop">
+  <div class="container-wrapper">
+    <div class="row justify-content-center">
+      <h2 class="thankYouMsg contentMarginTop">
+        Payment has been cancelled!
+      </h2>
+
+      <p class="pleaseWaitContent">
+        It looks like the transaction failed…. Why don't you give it some time
+        and try again later? Mail us at customersupport@JKH.com.sg if the
+        problem persists.
+      </p>
+
+      <div class="row buttonWrapper justify-content-center justify-content-sm-end">
+        <div class="col-7 col-xs-5 col-sm-4 col-lg-3" *ngIf="!isPermPolicyNull">
+          <button class="btn custom-btn" (click)="backToPayment()" id="btn_payment_back">
+            Back to Payment
+          </button>
+        </div>
+        <div class="col-7 col-xs-5 col-sm-4 col-lg-3" *ngIf="isPermPolicyNull">
+          <button class="btn custom-btn-grey custom-btn" type="button" (click)="onClose()">
+            <i class="fa-solid fa-xmark"></i>
+            Exit
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+<app-spinner></app-spinner>

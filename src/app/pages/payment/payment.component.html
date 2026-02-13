@@ -1,0 +1,95 @@
+<div class="overlay-black"></div>
+
+<app-nav-bar class="nav-bar"></app-nav-bar>
+
+<h3 class="subHeader">Payment Details</h3>
+
+<!-- Broker payment page -->
+
+<div class="container componentWrapper aboutMTop" *ngIf="!isCustomer && !isPayed">
+  <div class="container-wrapper">
+    <div class="row justify-content-center gap-3" [class.disabled-section]="isQuoteExpired">
+      <!-- Payment Option -->
+      <div class="row margin-bottom justify-content-center">
+        <div class="col-6 col-sm-4 col-md-3 col-lg-2 labelContainDiv">
+          <p class="mb-0">Payment Option :</p>
+        </div>
+        <div class="col-6 col-md-3">
+          <select class="form-select" aria-label="payemnt-option" (change)="payOptionChange($event)">
+            <option *ngFor="let option of paymentOption" [value]="option.code">
+              {{ option.content }}
+            </option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- Premiums -->
+
+    <div class="row justify-content-center contentMarginTop contentMarginBottom">
+      <div class="col-8 col-lg-5 totalPremiumDiv">
+        <div style="text-align: center;">
+          <h4 class="totalAmount">You Pay : S$ {{totalPremium | number : "1.2-2"}}</h4>
+          <span>GST Exempted</span>
+        </div>
+      </div>
+      <div class="row quote-timer">
+        <p [innerHTML]="overdueText"></p>
+      </div>
+    </div>
+
+
+
+
+    <div class="row contentMarginBottom contentMarginTop justify-content-between" [class.disabled-section]="isQuoteExpired">
+      <!-- Previous Button -->
+      <div class="col-4 col-lg-2">
+        <button  *ngIf="!isLinkGenerated" class="btn btn-danger btn-sm custom-btn" type="button" (click)="onBack()">
+          <i class="fa-solid fa-chevron-left"></i>
+          Previous
+        </button>
+      </div>
+
+      <div class="col-7 col-sm-6 col-md-5 col-lg-4 col-xl-3 " >
+        <button class="btn btn-danger btn-sm custom-btn" type="button" (click)="generateLink()">
+          Generate Payment Link
+          <i class="fa-solid fa-chevron-right"></i>
+        </button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- Customer payment page -->
+<div class="container componentWrapper aboutMTop" *ngIf="isCustomer && !isPayed">
+  <div class="container-wrapper">
+    <div class="row">
+      <div class="col-12 m-top d-flex flex-column align-items-center gap-4">
+        <h1 class="paylinkHead">Payment link to your policy is here..</h1>
+        <label>Amount to be paid : S$ {{totalPremium | number : "1.2-2"}}</label>
+      </div>
+    </div>
+      <div class="row quote-timer">
+        <p [innerHTML]="overdueText"></p>
+      </div>
+    <div class="row contentMarginBottom contentMarginTop justify-content-between" [class.disabled-section]="isQuoteExpired">
+      <!-- PayNow Button -->
+      <div class="col-6">
+        <button class="btn btn-danger btn-sm custom-btn" type="button" (click)="clickPaynow()">
+          PayNow
+        </button>
+      </div>
+
+      <!-- Credit Card Button -->
+      <div class="col-6 ">
+        <button class="btn btn-danger btn-sm custom-btn" type="button" (click)="clickCreditCard()"
+          [disabled]="isButtonClicked">
+          Credit Card
+        </button>
+      </div>
+    </div>
+
+  </div>
+</div>
+<app-spinner></app-spinner>

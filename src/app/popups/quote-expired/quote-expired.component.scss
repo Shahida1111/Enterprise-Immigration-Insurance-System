@@ -1,0 +1,132 @@
+/* Background overlay */
+.modal-backdrop.show {
+  background-color: rgba(0, 0, 0, 0.7); /* Darker overlay behind the modal */
+}
+
+/* Modal Content (keeping the main modal light) */
+.modal-content {
+  background-color: #fff; /* White background for main content */
+  color: #333; /* Dark text for readability */
+  border-radius: 12px;
+  border: 1px solid #ccc;
+}
+
+.modal-header {
+  background-color: #f8f9fa; /* Light background for header */
+  color: #333; /* Dark text */
+  padding: 15px;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  white-space: nowrap; /* Prevents text from wrapping */
+  overflow: hidden; /* Hides overflow text */
+  text-overflow: ellipsis; /* Adds "..." for overflowed text */
+  max-width: 80%; /* Adjust this width to fit the space */
+}
+
+
+.icon-size {
+  cursor: pointer;
+  font-size: 25px;
+  color: #ed0039; /* Red color for close icon */
+  transition: color 0.3s ease;
+  padding-left: 90%;
+}
+
+.icon-size:hover {
+  color: #bd002e;
+}
+
+/* Modal Body */
+.modal-body {
+  background-color: #f5f5f5; /* Lighter grey body */
+  padding: 20px 30px;
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+}
+
+.modal-body p {
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-bottom: 20px;
+  color: #333; /* Darker text */
+}
+
+/* Buttons */
+button {
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 10px 20px;
+  border-radius: 8px;
+  width: 100%;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+/* Confirm button (Red) */
+.btn-confirm {
+  background-color: #035ba3;
+  color: white;
+  border-radius: 8px;
+  padding: 10px 20px;
+  border-color: #035ba3;
+  width: 100%;
+  margin-top: 15px;
+}
+
+.btn-confirm:hover,
+.btn-confirm:focus {
+  background-color: #035ba3;
+  border-color: #035ba3;
+  transform: scale(1.05); /* Slight scale effect on hover */
+}
+
+/* Gray button */
+.btn-gray {
+  background-color: #6a625a;
+  border-color: #6a625a;
+  color: white;
+  border-radius: 8px;
+  padding: 10px 20px;
+  width: 100%;
+  margin-top: 15px;
+}
+
+.btn-gray:hover {
+  background-color: #5a524b;
+  border-color: #5a524b;
+  transform: scale(1.05);
+}
+
+/* For closing modal gracefully */
+.modal-content {
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+.exit-button-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.custom-btn {
+  background-color: #035ba3;
+  border-color: #035ba3;
+  padding: 8px 20px;
+  border-radius: 8px;
+  font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  width: auto; /* Ensure it's only as wide as the content */
+}
+
+.custom-btn:hover {
+  background-color: #035ba3;
+  border-color: #035ba3;
+  transform: scale(1.05);
+}

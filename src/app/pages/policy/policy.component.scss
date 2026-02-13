@@ -1,0 +1,217 @@
+.overlay-black {
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 50;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    opacity: 0.3;
+}
+.nationality-li {
+  background-color: rgba(238, 238, 238, 1)
+}
+.dropDown_nationality {
+  cursor: pointer;
+ 
+}
+.nationalityDropDown-div{
+  position: absolute; z-index: 100
+}
+#nationalityDropDown ul li {
+  font-size: 14px !important;
+  display: block;
+}
+
+#nationalityDropDown ul {
+  min-width: 350px !important;
+  max-width: 350px !important;
+
+  z-index: 600 !important;
+  max-height: 165px;
+  overflow-y: scroll;
+}
+.nationalityDropDown_travellers ul li {
+  font-size: 14px !important;
+  display: block;
+}
+
+.nationalityDropDown_travellers ul {
+  min-width: 350px !important;
+  max-width: 350px !important;
+ 
+  z-index: 600 !important;
+  max-height: 165px;
+  overflow-y: scroll;
+}
+.nav-bar{
+    position: relative;
+    z-index: 52;
+}
+
+.subHeader{
+    text-align: center;
+    color: white;
+    font-size: 30px;
+    z-index: 200;
+    position: relative;
+    opacity: 0.8;
+}
+
+.componentWrapper {
+    margin-top: 40px;
+    margin-bottom: 70px;
+    position: relative;
+    z-index: 52!important;
+}
+
+.container-wrapper {
+    background-color: rgba(255, 255, 255, 0.7) !important;
+    padding: 40px;
+    border-radius: 8px;
+}
+
+.contentMarginBottom {
+  margin-bottom: 20px;
+}
+
+
+
+.place-holder::placeholder {
+  color: #a7a7a7;
+}
+
+.calender-icon {
+  float: right;
+  position: relative;
+  top: -28px;
+  left: -9px;
+  color: #fff;
+}
+
+
+th{
+  background-color: transparent;
+}
+
+td{
+  background-color: transparent;
+}
+
+.input-grey {
+  background-color: #6a625a;
+  height: 38px;
+  color: #ffff !important;
+}
+.index{
+  text-align: left;
+  padding-left: 20%;
+}
+.workerDetDiv {
+  border: 1px solid #f7f2f2;
+  border-radius: 10px;
+  padding: 10px;
+  gap: 10px;
+}
+
+.labelContainDiv{
+  display: flex;
+  padding-top: 8px;
+  //align-items: center;
+}
+
+select {
+  background-color: #6a625a;
+  border-color: #6a625a;
+  margin-bottom: 0px;
+  border-radius: 8px;
+  color: #fff;
+}
+
+.remarksInput {
+  padding: 10px;
+  height: 10rem;
+}
+
+.totalPremiumDiv{
+  background-color: #004177;
+  border-radius: 8px;
+  padding: 10px 20px;
+}
+
+.totalPremiumDiv span{
+  color: white;
+  font-size: 0.9rem;
+}
+
+.totalAmount{
+  font-weight: 700;
+  white-space: pre;
+  color: #ffff;
+  padding: 9px 0px;
+  padding-bottom: 0!important;
+  margin-bottom: 0px;
+}
+
+.contentMarginTop{
+  margin-top: 40px;
+}
+
+.custom-btn-grey {
+  float: right;
+  padding: 10px;
+  border-radius: 8px;
+  background-color: #6a625a !important;
+  font-size: 18px !important;
+  width: 100%;
+  border: none;
+  color: #fff !important;
+}
+
+@media (max-width: 576px) {
+    .componentWrapper {
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+  
+    .container-wrapper {
+      padding: 10px;
+    }
+  
+    label {
+      font-size: 12px;
+    }
+  
+    select {
+      font-size: 12px;
+    }
+}
+
+@media (min-width: 760px) and (max-width: 1366px) {
+    .aboutMTop {
+      margin-top: 20px;
+      position: relative !important;
+    }
+}
+
+@media (min-width: 577px) and (max-width: 768px) {
+  .componentWrapper {
+    max-width: 719px!important;
+  }
+}
+
+@media (max-width: 577px) {
+  .componentWrapper {
+    max-width: 719px!important;
+  }
+}
+
+@media (min-width: 992px) {
+  .nationalityDiv{
+    width: 121px!important;
+  }
+
+  .inputDiv{
+    width: 22%!important;
+  }
+}

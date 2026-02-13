@@ -1,0 +1,205 @@
+<div class="overlay-black"></div>
+
+<app-nav-bar class="nav-bar"></app-nav-bar>
+
+<h3 class="subHeader">Add New Insured Employer</h3>
+
+<div class="container componentWrapper aboutMTop"  *ngIf="!isPopupVisible">
+  <div class="container-wrapper">
+
+    <!-- UEN Number -->
+    <div class="row contentMarginBottom">
+      <div class="col-sm-4 col-md-4 ">
+        <label  for=""><span class="uen">UEN Number</span>:</label>
+      </div>
+
+      <div class="col-sm-8 col-md-6 ">
+        <input class="form-control" [(ngModel)]="uenNumber" (ngModelChange)="selectEmployer($event)" [disabled]="exceedTotalAccumulation" maxlength="10"
+          minlength="9" pattern="[0-9A-Z]{9,10}" #uenInput="ngModel" required />
+        <div *ngIf="uenInput.errors && uenSubmit">
+
+          <div class="validation-text" *ngIf="uenInput.errors['required']">UEN is required.</div>
+
+          <div class="validation-text" *ngIf="uenInput.errors['minlength']">UEN must be at least 9 characters long.
+          </div>
+
+        </div>
+      </div>
+
+
+      <div class="col-md-2 ">
+        <button class="btn btn-danger btn-sm custom-btn btn-retrieve"   [disabled]="exceedTotalAccumulation" type="button"
+          (click)="onProceed()">Retrieve</button>
+      </div>
+
+    </div>
+
+    <div *ngIf="uenSuccess && !isError">
+      <!-- Insured Employer -->
+      <div class="row contentMarginBottom">
+        <div class="col-sm-4 col-md-4 ">
+          <label for="">Insured Employer :</label>
+        </div>
+
+        <div class="col-sm-8 col-md-6 ">
+          <input class="form-control readOnlyInput" readonly="true" [(ngModel)]="insuredEmployer" />
+        </div>
+      </div>
+
+      <!-- Bond Period -->
+      <div *ngIf="!isError" class="row contentMarginBottom">
+        <div class="col-sm-4 col-md-4 ">
+          <label for="">Bond Period :</label>
+        </div>
+
+        <div class="col-sm-8 col-md-3">
+          <select class="form-select" aria-label="Default select example" [(ngModel)]="defaultBondPeriod"
+            (change)="changBondPeriod($event)">
+            <option value hidden>Select</option>
+            <option *ngFor="let period of BondPeriodList" [value]="period">
+              {{ period }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Pax -->
+      <div  *ngIf="!excludedSSIC && !underwriterReferralSSIC" class="row contentMarginBottom paxInput">
+        <div class="col-sm-4 col-md-4 ">
+          <label for="">Number of Worker(s)<span class="redStar"> * </span>:</label>
+        </div>
+
+        <div class="col-sm-8 col-md-3 ">
+          <input class="form-control" appNumericOnly [maxlength]="2" required [(ngModel)]="pax"  [readonly]="exceedTotalAccumulation"   [ngClass]="{ 'readOnlyInput': exceedTotalAccumulation }" #paxInput="ngModel" />
+          <div *ngIf="paxInput.errors && isSubmit">
+
+            <div class="validation-text" *ngIf="paxInput.errors['required']">*Required !</div>
+
+
+          </div>
+          <div *ngIf="pax==0 && isSubmit && !paxInput.errors">
+
+            <div class="validation-text" >Worker cannot be zero.</div>
+
+
+          </div>
+        </div>
+      </div>
+
+      <!-- Balanced workers left donot delete commented code since may be needed in future -->
+      <!-- sonar-ignore -->
+      <!-- <div *ngIf="!isError" class="row contentMarginBottom">
+        <div class="col-sm-4 col-md-4 ">
+          <label for="">Balanced Workers Left :</label>
+        </div>
+
+        <div class="col-sm-8 col-md-3 ">
+          <input class="form-control readOnlyInput" readonly="true" [(ngModel)]="balanceedWorkersLeft" />
+        </div>
+      </div> -->
+
+      <!-- Premiums -->
+      <div *ngIf="!isError" class="row contentMarginBottom">
+        <div class="col-12 ">
+          <label for="">Premiums :</label>
+        </div>
+
+        <div class="row">    
+        </div>
+        <div class="col-sm-4 col-md-4 pl-3">
+          <label for="">14 Months :</label>
+        </div>
+        <div class="col-sm-8 col-md-3 ">
+            <input class="form-control readOnlyInput" readonly="true" [value]="formattedPremiumFor14Months" />
+        </div>
+
+        <div class="row">    
+        </div>
+        <div class="col-sm-4 col-md-4 pl-3">
+          <label for="">26 Months :</label>
+        </div>
+        <div class="col-sm-8 col-md-3 ">
+          <input class="form-control readOnlyInput" readonly="true" [value]="formattedPremiumFor26Months" />
+        </div>
+
+      </div>
+      
+      <!-- Promocode -->
+      <!-- <div *ngIf="!isError" class="row contentMarginBottom">
+        <div class="col-sm-4 col-md-4 ">
+          <label  for=""><span class="uen">Promo Code </span>:</label>
+        </div>
+  
+        <div class="col-sm-8 col-md-6 ">
+          <input class="form-control" minlength="9" pattern="[0-9A-Z]{9,10}" [(ngModel)]="promo_code" />
+        </div>
+      </div> -->
+      
+      <!-- Pre defined terms -->
+      <div *ngIf="!isError" class="row contentMarginBottom">
+
+        <div class="d-flex flex-column">
+          <span class="test">{{ termsList.description }}</span>
+          <ul *ngIf="termsList.point && termsList.point.length">
+            <li *ngFor="let p of termsList.point">{{ p }}</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- UW Remarks Text -->
+      <div *ngIf="!isError" class="row contentMarginBottom">
+        <p class="uwRemarksText">{{uwRemarks}}</p>
+      </div>
+
+      <!-- Next and Exit Buttons -->
+      <div *ngIf="!isError" class="row contentMarginBottom justify-content-end">
+        <!-- Exit Button -->
+        <div class="col-md-2">
+          <button class="btn custom-btn-grey btn-sm custom-btn" type="button" (click)="onExit()">
+            <i class="fa-solid fa-xmark"></i>
+            Exit
+          </button>
+        </div>
+
+        <!-- Next Button -->
+        <div class="col-md-2">
+          <button class="btn btn-danger btn-sm custom-btn" type="button" (click)="onNext()">
+            Next
+            <i class="fa-solid fa-chevron-right"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="row errorDiv p-2" *ngIf="isError">
+      <p class="text-center" *ngIf="!uenSuccess">{{errMsg}}</p>
+      <p class="text-center" *ngIf="exceedTotalAccumulation && uenSuccess">{{errMsg}}</p>
+      <p class="text-center" *ngIf="excludedSSIC">{{errMsg}}</p>
+      <p class="text-center" *ngIf="underwriterReferralSSIC && uenSuccess ">{{errMsg}}</p>
+
+    </div>
+
+    <!-- Previous and Exit Buttons -->
+    <div class="row contentMarginTop justify-content-between" *ngIf="isError">
+
+      <!-- Previous Button -->
+      <div class="col-md-2">
+        <button class="btn btn-danger btn-sm custom-btn" type="button" (click)="onPrevious()"
+          *ngIf=" uenSuccess && exceedTotalAccumulation">
+          <i class="fa-solid fa-chevron-left"></i>
+          Previous
+        </button>
+      </div>
+
+      <!-- Exit Button -->
+      <div class="col-md-2">
+        <button class="btn custom-btn-grey btn-sm custom-btn" type="button" (click)="onExit()">
+          <i class="fa-solid fa-xmark"></i>
+          Exit
+        </button>
+      </div>
+    </div>
+  </div>
+
+</div>
+<app-spinner></app-spinner>

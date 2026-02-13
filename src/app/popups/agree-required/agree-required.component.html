@@ -1,0 +1,17 @@
+<div class="modal-header">
+  <h5 class="modal-title">NOT ALLOWED!</h5>
+  <span class="cross-span" 
+  [ngClass]="{'lg-close-btn': modalSize === 'lg'}" 
+  
+  (click)="exit()" id="BI_i_close">
+    <i type="button" class="fa-solid fa-xmark icon-size"></i>
+  </span>
+</div>
+<div class="modal-body m-body">
+  <p *ngIf="msg=='disagree'" id="b2c-p_product">You are allowed to proceed only when agreed.</p>
+  <p *ngIf="msg=='duplicate'" id="b2c-p_product">This file has already been uploaded.</p>
+  <p *ngIf="msg=='duplicateFIN'" id="b2c-p_product">NRIC can not be duplicated !</p>
+  <p *ngIf="msg=='detailsMissing'" id="b2c-p_product">Please ensure all required fields are filled in before proceeding.</p>
+  
+  <div class="modal-footer flot"></div>
+</div>

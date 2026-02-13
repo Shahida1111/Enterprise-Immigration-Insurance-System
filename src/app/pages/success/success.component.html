@@ -1,0 +1,96 @@
+<div class="overlay-black"></div>
+
+<app-nav-bar class="nav-bar"></app-nav-bar>
+<h3 class="subHeader">Payment Successful</h3>
+<div class="container componentWrapper aboutMTop">
+    <div class="content-wrapper">
+
+        <!-- Policy Holder -->
+        <div class="row justify-content-center">
+            <div class="col-5 m-top text-end">
+                <label for="">Policy Holder :</label>
+            </div>
+            <div class="col-7 m-top-2">
+                <label for="" class="fw-bold">{{policyHolder}}</label>
+            </div>
+        </div>
+
+        <!-- Policy Number -->
+        <div class="row justify-content-center">
+            <div class="col-5 m-top text-end">
+                <label for="">Policy Number :</label>
+            </div>
+            <div class="col-7 m-top-2">
+                <label for="" class="fw-bold">{{policyNumber}}</label>
+            </div>
+        </div>
+
+        <!-- Period of Cover -->
+        <div class="row justify-content-center">
+            <div class="col-5 m-top text-end">
+                <label for="">Period of Cover :</label>
+            </div>
+            <div class="col-7 m-top-2 pt-0 pb-0">
+                <div class="row border-0">
+                    <label for="" class="col-6 col-lg-2 m-top dateLbl fw-bold">From :</label>
+                    <label for="" class="col-6 fw-bold" style="padding: 20px 15px;">{{fromDate}}</label>
+                </div>
+                <div class="row border-0">
+                    <label for="" class="col-6 col-lg-2 dateLbl m-top fw-bold">To&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        :</label>
+                    <label for="" class="col-6 fw-bold" style="padding: 20px 15px;">{{toDate}}</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Amount -->
+        <div class="row justify-content-center">
+            <div class="col-5 m-top text-end">
+                <label for="">Amount :</label>
+            </div>
+            <div class="col-7 m-top-2">
+                <label for="" class="fw-bold">S$ {{amount | number : "1.2-2"}}</label>
+            </div>
+        </div>
+
+
+        <div class="row contentMarginBottom contentMarginTop " style="border:none">
+            <!-- close Button -->
+            <div class="col-12 col-md-10 dwn-text">
+                <p>Policy Document downloads will be enabled within next 2 days after submission to Ministry of Manpower
+                </p>
+            </div>
+            <div class="col-12 col-md-2">
+                <button class="btn btn-danger btn-sm custom-btn" type="button" (click)="onClose()">
+                    Close
+
+                </button>
+            </div>
+        </div>
+
+    </div>
+    <!-- sonar-ignore -->
+    <!-- <div class="row contentMarginBottom contentMarginTop " style="border:none">
+
+
+        <div class="col-12 col-md-4">
+            <button class="btn btn-danger btn-sm custom-btn" type="button" (click)="onDownload()">
+                Download Document
+
+            </button>
+        </div>
+        <div class="col-8 col-sm-8 col-md-4 ">
+            <input class="form-control" type="email" name="email" [(ngModel)]="email" placeholder="Enter Your Email" required
+                autocomplete="off" />
+
+        </div>
+
+        <div class="col-12 col-md-4">
+            <button class="btn btn-danger btn-sm custom-btn" type="button" (click)="onEmail()">
+             Email
+
+            </button>
+        </div>
+    </div> -->
+</div>
+<app-spinner></app-spinner>

@@ -1,0 +1,231 @@
+<div class="overlay-black"></div>
+
+<app-nav-bar class="nav-bar"></app-nav-bar>
+
+<h3 class="subHeader">Quotation</h3>
+
+<div class="container componentWrapper aboutMTop">
+    <div class="content-wrapper">
+
+        <!-- Name of the Insured Employer -->
+        <div class="row justify-content-center">
+            <div class="col-5 m-top text-end">
+              <label for="">Name of the Insured Employer :</label>
+            </div>
+            <div class="col-7 m-top-2">
+                <label for="">{{insuredEmployerName}}</label>
+            </div>
+        </div>
+
+        <!-- Email Address -->
+        <div class="row justify-content-center">
+            <div class="col-5 m-top text-end">
+              <label for="">Email Address :</label>
+            </div>
+            <div class="col-7 m-top-2">
+                <label for="">{{email}}</label>
+            </div>
+        </div>
+
+        <!-- Mobile / Office Number -->
+        <div class="row justify-content-center">
+            <div class="col-5 m-top text-end">
+              <label for="">Mobile / Office Number :</label>
+            </div>
+            <div class="col-7 m-top-2">
+                <label for="">{{mobileNumber}}</label>
+            </div>
+        </div>
+
+        <!-- UEN Number -->
+        <div class="row justify-content-center">
+            <div class="col-5 m-top text-end">
+              <label for="">UEN Number :</label>
+            </div>
+            <div class="col-7 m-top-2">
+                <label for="">{{uenNumber}}</label>
+            </div>
+        </div>
+
+        <!-- CPF Number -->
+        <div class="row justify-content-center">
+            <div class="col-5 m-top text-end">
+              <label for="">CPF Submission Number :</label>
+            </div>
+            <div class="col-7 col-6 m-top-2">
+                <label for="">{{cpfNumber}}</label>
+            </div>
+        </div>
+
+        <!-- Quotation # -->
+        <div class="row justify-content-center">
+            <div class="col-5 m-top text-end">
+              <label for="">Quotation # :</label>
+            </div>
+            <div class="col-7 m-top-2">
+                <label for="">{{quotationNumber}}</label>
+            </div>
+        </div>
+
+        <!-- Nature of Business -->
+        <div class="row justify-content-center">
+            <div class="col-5 m-top text-end">
+              <label for="">Nature of Business :</label>
+            </div>
+            <div class="col-7 m-top-2">
+                <div *ngFor="let item of ssicList; let i = index">
+              <label class="p-top" for="">{{ item?.description ? item?.description : 'NA' }}</label>
+            </div>
+        </div>
+        </div>
+
+
+
+        <!-- Address -->
+        <div class="row justify-content-center">
+            <div class="col-5 m-top text-end">
+              <label for="">Address :</label>
+            </div>
+            <div class="col-7 m-top-2">
+                <span *ngIf="address?.blkhseNo && address?.streetName ">
+                    <label for=""> {{ address?.blkhseNo || "" }}{{address.blkhseNo?', ':''}}{{address?.streetName }}</label>
+                  </span>
+                    <span *ngIf="address?.unitNo || address?.levelNo">
+                      <br><label for="">{{address?.levelNo }}{{address.levelNo?'-':''}}{{address?.unitNo}}</label>
+                    </span>
+                    <span *ngIf="address?.bldgName">
+                        <br />
+                        <label for=""
+                          >{{ address?.bldgName || "" }}</label
+                        >
+                      </span>
+                    <br><label for="">Singapore</label>
+                    <label for="" class="postal-code">Postal Code :</label>
+                    <label for="" class="postal-code2">{{address?.postalCode || 'NA'}}</label>
+            </div>
+        </div>
+
+        <!-- Period of Cover -->
+        <div class="row justify-content-center">
+            <div class="col-5 m-top text-end">
+              <label for="">Period of Cover :</label>
+            </div>
+            <div class="col-7 m-top-2">
+                <div class="row border-0">
+                    <label for="" class="col-6 col-lg-1 date">From :</label>
+                    <label for="" class="col-6">{{fromDate}}</label>
+                </div>
+                <div class="row border-0 mt-3">
+                    <label for=""  class="col-6 col-lg-1 date">To &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</label>
+                    <label for=""  class="col-6">{{toDate}}</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Total Number Of Workers -->
+        <div class="row justify-content-center">
+            <div class="col-5 m-top text-end">
+              <label for="">Total Number Of Workers :</label>
+            </div>
+            <div class="col-7 m-top-2">
+                <label for="">{{totalWorkers}}</label>
+            </div>
+        </div>
+
+        <!-- Worker Details -->
+        <div class="row justify-content-center">
+            <div class="col-5 m-top text-end">
+              <label for="">Worker Details :</label>
+            </div>
+            <div class="col-7 m-top-2 pb-0">
+                <table class="table mb-0">
+                    <caption class="hide_JKH_cap">
+                        JKH immigration data tbls
+                      </caption>
+                    <thead>
+                        <tr>
+                          <th>No</th>
+                          <th style="text-align: center;">FIN</th>
+                          <th style="text-align: center;">Name</th>
+                          <th style="text-align: center;">Nationality</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let worker of workers; let i = index">
+                            <td>
+                                <p>{{i+1}}</p>
+                            </td>
+                            <td class="text-center">
+                                <p class="fw-normal mb-1">{{worker.fin}}</p>
+                            </td>
+                            <td class="text-center">
+                                <p class="fw-normal mb-1">{{worker.name}}</p>
+                            </td>
+                            <td class="text-center">
+                                <p class="fw-normal mb-1">{{worker.nationality}}</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row justify-content-center contentMarginBottom contentMarginTop">
+        <div class="col-8 col-lg-6 totalPremiumDiv d-flex flex-column align-items-center">
+          <div>
+            <h4 class="totalAmount">Total Premium : S$ {{totalPremium | number : "1.2-2"}}</h4>
+            <span>per worker S$ {{premiumPerWorker | number : "1.2-2"}}</span>
+          </div>
+        </div>
+    </div>
+
+    <div class="row contentMarginBottom contentMarginTop justify-content-between mb-5" style="position: relative;z-index: 1000;">
+
+        <div class="col-6 d-flex justify-content-start gap-3">
+            <!-- Previous Button -->
+            <div class=" col-5 col-lg-3" [class.disabled-section]="isQuoteExpired">
+                <button
+                    class="btn btn-danger btn-sm custom-btn"
+                    type="button"
+                    (click)="onBack()"
+                >
+                    <i class="fa-solid fa-chevron-left"></i>
+                    Previous
+                </button>
+            </div>
+
+            <!-- Print Quotation Button -->
+
+        </div>
+
+        <div class="col-6 d-flex justify-content-end gap-3">
+
+            <div class="col-4 col-lg-3">
+                <button
+                class="btn custom-btn-grey btn-sm custom-btn"
+                type="button"
+                (click)="onExit()"
+                >
+                <i class="fa-solid fa-xmark"></i>
+                Exit
+                </button>
+            </div>
+
+
+            <div class=" col-8 col-lg-6" [class.disabled-section]="isQuoteExpired || isWorkersExceeded">
+                <button
+                    class="btn btn-danger btn-sm custom-btn"
+                    type="button"
+                    (click)="onProceed()"
+                >
+                    Proceed to Payment
+                    <i class="fa-solid fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+</div>
+
+</div>
+<app-spinner></app-spinner>

@@ -1,0 +1,52 @@
+<div class="overlay-black"></div>
+
+<app-nav-bar class="nav-bar"></app-nav-bar>
+
+<h3 class="subHeader contentMarginTop">Payment Link !</h3>
+
+<div class="container componentWrapper aboutMTop">
+    <div class="container-wrapper">
+        <div class="row">
+            <h1 class="text-center content"><span class="quote-number">Quote: {{quoteNo}}</span>
+                <span class="payable-amount">Payable SGD: {{payableNetPremium | number:'1.2-2'}} </span>
+            </h1>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-12 textQRwrap">
+
+                <div *ngIf="base64QR; else noQrCode" class="imgWrapper">
+    
+                    <img [src]="'data:image/png;base64,' + base64QR" alt="QR Code" class="qrcode">
+    
+                </div>
+    
+                <ng-template #noQrCode>
+                    <p class="text-center">No QR code generated yet.</p>
+                </ng-template>
+            </div>
+        </div>
+        
+        <div class="col-12 description">Please use this QR Code to pay the premium from your PayNow app. Once paid your policy documents will be emailed to you after successful submission to Ministry of Manpower.
+        </div>
+
+        <div class="row justify-content-center pt-3">
+            <div class="col-md-3 col-6 text-end padding-right padding-left">
+                <button type="button" class="btn btn-danger custom-btn"
+                    (click)="downloadQRCode()">
+                    <i class="fa-solid fa-download icon-size"></i>
+                    Download
+                </button>
+            </div>
+            <div class="col-md-3 col-6 text-end padding-right">
+                <button type="button" class="btn btn-danger custom-btn gry-btn"
+                    (click)="close()">
+                    <i class="fa-solid fa-xmark icon-size"></i>
+                    Close
+                </button>
+            </div>
+        </div>
+        
+    </div>
+</div>
+<app-spinner></app-spinner>

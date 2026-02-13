@@ -1,0 +1,49 @@
+.btn-confirm {
+    background-color: #035ba3;
+    color: white;
+    border-radius: 8px;
+    padding: 10px 10px;
+    border-color: #035ba3;
+    width: 100%;
+  }
+  .btn-confirm:focus,
+  .btn-confirm:hover {
+    background-color: #035ba3;
+    border-color: #035ba3;
+  }
+  
+  .btn-gray {
+    background-color: #6a625a;
+    border-color: #6a625a;
+    color: white;
+    border-radius: 8px;
+    padding: 10px 10px;
+    width: 100%;
+  }
+  
+  .btn-gray:hover {
+    background-color: #5a524b;
+    border-color: #6a625a;
+  }
+  .cross-span {
+    padding-left: 78%;
+  }
+  .m-body {
+    padding: 14px 38px;
+  }
+  
+  .icon-size {
+    cursor: pointer;
+    font-size: 20px;
+    padding-left: 82%;
+  }
+  .icon-size:hover {
+    color: #bd002e;
+  }
+  
+  .flot {
+    float: left;
+  }
+  .custom-btn{
+margin-bottom: 10px;
+  }

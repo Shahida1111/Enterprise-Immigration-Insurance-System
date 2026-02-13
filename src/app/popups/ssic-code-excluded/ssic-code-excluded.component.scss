@@ -1,0 +1,78 @@
+.inputField {
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid #969696;
+    border-radius: 0px;
+    padding: 5px 0px;
+  }
+  
+  .inputField:focus,
+  .inputField:active {
+    outline: none;
+    box-shadow: none;
+  }
+  
+  .inputFieldLabel {
+    border: none;
+  }
+  
+  .inputFieldLabel::after {
+    background-color: transparent !important;
+  }
+  
+  .btn-confirm {
+    background-color: #035ba3;
+    color: white;
+    border-radius: 8px;
+    padding: 10px 10px;
+    border-color: #035ba3;
+    width: 100%;
+  }
+  .btn-confirm:focus,
+  .btn-confirm:hover {
+    background-color: #035ba3;
+    border-color: #035ba3;
+  }
+  
+  .btn-gray {
+    background-color: #6a625a;
+    border-color: #6a625a;
+    color: white;
+    border-radius: 8px;
+    padding: 10px 10px;
+    width: 100%;
+  }
+  
+  .btn-gray:hover {
+    background-color: #5a524b;
+    border-color: #6a625a;
+  }
+  
+  .m-body {
+    padding: 0 38px;
+  }
+  
+  .icon-size {
+    cursor: pointer;
+    font-size: 20px;
+    padding-left: 65%;
+  }
+  .icon-size:hover {
+    color: #bd002e;
+  }
+  
+  .flot {
+    float: left;
+  }
+  
+  .m-body p {
+    padding-bottom: 0px;
+    margin-top: 25px;
+  }
+  
+  .cross-span {
+    padding-left: 65%;
+  }
+  .lg-close-btn {
+    padding-left: 77%;  /* Adjust for 'lg' */
+  }

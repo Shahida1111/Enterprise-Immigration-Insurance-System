@@ -1,0 +1,56 @@
+.btn-confirm {
+  background-color: #035ba3 !important;
+  color: white;
+  border-radius: 8px;
+  border-color: #035ba3;
+  padding: 10px 27px !important;
+}
+
+.btn-confirm:hover {
+  background-color: #035ba3 !important;
+  border-color: #035ba3;
+}
+
+.btn-gray {
+  background-color: #6a625a;
+  border-color: #6a625a;
+  color: white;
+  border-radius: 8px;
+  padding: 10px 43px !important;
+}
+
+.btn-gray:hover {
+  background-color: #5a524b;
+  border-color: #6a625a;
+}
+
+.padding-right {
+  padding-right: 0px !important;
+  border: none;
+}
+
+.cross {
+  --fa-primary-color: #ff0000;
+  --fa-secondary-color: #ff0505;
+  font-size: 25px;
+  opacity: 0.5;
+  cursor: pointer;
+  padding-left: 57% !important;
+}
+.cross:focus-visible {
+  --fa-primary-color: #ff0000;
+  --fa-secondary-color: #ff0505;
+}
+.modal-header {
+  border-bottom: none;
+  padding: 8px 1rem;
+  color: #333 !important;
+}
+
+h5 {
+  font-weight: 700;
+  margin-bottom: 0;
+}
+.row-message{
+  padding-left: 0.25rem !important;
+}

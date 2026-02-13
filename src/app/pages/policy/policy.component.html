@@ -1,0 +1,292 @@
+<div class="overlay-black"></div>
+
+<app-nav-bar class="nav-bar"></app-nav-bar>
+
+<h3 class="subHeader">Policy Information</h3>
+
+<div class="container componentWrapper aboutMTop">
+    <form [formGroup]="policyForm" (ngSubmit)="onNext()">
+        <!-- Policy Information Section -->
+        <div class="container-wrapper">
+            <!-- Indemnity Type -->
+            <div class="row contentMarginBottom">
+                <div class="col-4 col-sm-4 col-md-3 col-lg-3">
+                    <label for="">Indemnity Type :</label>
+                </div>
+
+                <div class="col-4 col-sm-8 col-md-3 ">
+                    <label for="">{{indemnityType}}</label>
+                </div>
+            </div>
+
+            <!-- Policy From & Policy To Pickers -->
+            <div class="row contentMarginBottom">
+                <div class="row col-12 col-lg-6">
+                    <div class="col-3 col-lg-6 ">
+                        <label class="labelContainDiv" for="">Policy From :</label>
+                    </div>
+
+                    <div class="col-6">
+                        <input type="text" class="form-control floating-input inputField input-grey place-holder"
+                            placeholder="From" name="fromDate" id="fromDate" ngbDatepicker #fromDate="ngbDatepicker"
+                            (click)="fromDate.toggle()" formControlName="fromDate"
+                            (ngModelChange)="fromDateChange($event)" [minDate]="minDate" appAlphabetOnly appNumericOnly
+                            readonly autocomplete="off" />
+
+                        <i class="fa-solid fa-calendar-days calender-icon"></i>
+                        <span id="fromDateRQ" class="error-text"
+                            *ngIf="policyForm.controls['fromDate']['errors']?.['required'] && isSubmitted">
+                            *Required !</span>
+                    </div>
+                </div>
+
+                <div class="row col-12 col-lg-6">
+                    <div class="col-3 col-lg-6 ">
+                        <label class="labelContainDiv" for="">Policy To :</label>
+                    </div>
+
+                    <div class="col-6">
+                        <input type="text"
+                            class="form-control floating-input inputField input-grey place-holder readOnlyInput"
+                            placeholder="To(Midnight)" name="toDate" id="toDate" ngbDatepicker #toDate="ngbDatepicker"
+                            formControlName="toDate" (change)="toDateChange()" [minDate]="toDateMin" appAlphabetOnly
+                            appNumericOnly readonly autocomplete="off" />
+
+                        <i class="fa-solid fa-calendar-days calender-icon"></i>
+                    </div>
+                </div>
+                <div style="text-align: center; color: black; margin-top: 10px;">
+                    Please ensure the Guarantee effective date is not postdated > 14 days in advance.
+                </div>
+            </div>
+        </div>
+
+        <h3 class="subHeader mt-5 mb-4">Supporting Documents</h3>
+
+        <!-- Supporting Documents Section -->
+        <div class="container-wrapper">
+            <!-- Upload Button -->
+            <div class="row contentMarginBottom justify-content-end">
+                <div class="col-6 col-sm-8 col-md-9 col-lg-10" style="color: black; margin-top: 12px;">
+                    Please upload file smaller than 10MB in size.  File size larger than this limit will not be accepted.
+                </div>
+                <div class="col-6 col-sm-4 col-md-3 col-lg-2">
+                    <input type="file" id="fileInput" style="display: none;" (change)="onFileSelected($event)">
+                    <button class="btn btn-sm custom-btn" type="button" (click)="triggerFileInput()">
+                        <i class="fa-solid fa-upload"></i> Upload
+                    </button>
+                </div>
+            </div>
+
+            <!-- Supporting Doccuments Table -->
+            <div class="row justify-content-center">
+                <div class="col-10">
+                    <table class="table">
+                        <caption class="hide_JKH_cap">
+                            JKH broker data tbls
+                        </caption>
+                        <thead>
+                            <tr>
+                                <th>Worker No</th>
+                                <th style="text-align: center;">File Name</th>
+                                <th style="text-align: center;">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let document of workersList; let i = index">
+                                <td class="text-center">
+                                    <p class="fw-normal mb-1 index">{{i+1}}</p>
+                                </td>
+                                <td class="text-center">
+                                    <p class="fw-normal mb-1">{{document.fileName}}</p>
+                                </td>
+                                <td class="text-center">
+                                    <button type="button" class="btn btn-sm fw-bold" (click)="viewDocuments(document.id)">
+                                        <i class="fa-solid fa-eye"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-sm fw-bold" (click)="deleteDocument(i)">
+                                        <i class="fa-solid fa-trash-can"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <!-- Informational Message -->
+
+            <div style="text-align: center; color: black; margin-top: 10px;">
+                Please ensure the uploaded IPA letters or Renewal notices are original documents downloaded from MOM.
+            </div>
+            <div *ngIf="docsLimit" style="text-align: center;color: red;"> You can upload only {{numberOfWorkers}}
+                file(s),
+                one for each person listed. </div>
+            <div *ngIf="fileCountMatch==false && isSubmitted" style="text-align: center;color: red;"> You must upload
+                {{numberOfWorkers}}
+                file(s),
+                one for each person listed. </div>
+        </div>
+
+        <h3 class="subHeader mt-5 mb-4">Worker's Information</h3>
+
+        <!-- Workers information section -->
+        <div class="container-wrapper">
+            <!-- CPF Submission Number -->
+            <div class="row contentMarginBottom">
+                <div class="col-5 col-md-5 col-lg-4">
+                    <label class="labelContainDiv" for="">CPF Submission Number (CSN) :</label>
+                </div>
+
+                <div class="col-5 col-md-3 col-lg-5">
+                    <input type="text" class="form-control floating-input inputField input-grey place-holder" id="cpf"
+                        name="cpf" formControlName="cpf_no" required maxlength="17" minlength="16"
+                        appCapitalizeInputOnly (input)="removeSpaces($event)" (paste)="handlePaste($event)" />
+                    <span class="error-text"
+                        *ngIf="policyForm.controls['cpf_no']['errors']?.['required'] && isSubmitted && !policyForm.controls['cpf_no'].value">
+                        *Required !</span>
+
+                    <span class="error-text"
+                        *ngIf="policyForm.controls['cpf_no']['errors']?.['minlength']?.['requiredLength'] == 16 && isSubmitted"
+                        id="span_details_error11">*CPF Submission Number must be at least 16 characters long !</span>
+
+                </div>
+            </div>
+            <!-- Total Number Of Workers -->
+            <div class="row contentMarginBottom">
+                <div class="col-5 col-md-5 col-lg-4 ">
+                    <label for="">Total Number Of Workers :</label>
+                </div>
+
+                <div class="col-5 col-md-3 ">
+                    <label for="">{{numberOfWorkers}}</label>
+                </div>
+            </div>
+            <!-- Workers Name , FIN & Nationality -->
+            <div class="row workerDetDiv" formArrayName="workerArr">
+                <div class="row pb-4 pb-md-2 pb-lg-0 justify-content-between"
+                    *ngFor="let worker of workerArr.controls; let i = index">
+                    <!-- FIN -->
+                    <div class=" col-sm-12 col-md-5 col-lg-1 labelContainDiv">
+                        <label for="">FIN :</label>
+                    </div>
+                    <div class="col-sm-12 col-md-7 col-lg-2 inputDiv" [formGroupName]="i">
+                        <input type="text" class="form-control floating-input inputField input-grey place-holder"
+                            formControlName="workerFin" id="workerNricFin" maxlength="9" autocomplete="off"
+                            (keyup)="nricFinValidationCheck($event,i)" appCapitalizeInputOnly />
+                        <span class="error-text"
+                            *ngIf="worker.get('workerFin')?.invalid && isSubmitted && !worker.get('workerFin')?.value">
+                            *Required !
+                        </span>
+
+                        <span class="error-text"
+                            [class.show]="(isSubmitted && worker.get('workerFin')?.invalid) || (workerNRICValidationStatus[i] === false && worker.get('workerFin')?.value)">
+                            <ng-container
+                                *ngIf="workerNRICValidationStatus[i] === false && worker.get('workerFin')?.value">
+                                Invalid FIN !
+                            </ng-container>
+                        </span>
+                    </div>
+
+                    <!-- Name -->
+                    <div class=" col-sm-12 col-md-5 col-lg-1 labelContainDiv">
+                        <label for="">Name :</label>
+                    </div>
+                    <div class="col-sm-12 col-md-7 col-lg-3 inputDiv" [formGroupName]="i">
+                        <input type="text" class="form-control floating-input inputField input-grey place-holder"
+                            formControlName="workerName" required appAlphabetOnly />
+                        <span class="error-text" *ngIf="worker.get('workerName')?.invalid && isSubmitted">
+                            *Required !</span>
+                    </div>
+
+                    <!-- Nationality -->
+                    <div class=" col-sm-12 col-md-5 col-lg-2 labelContainDiv nationalityDiv">
+                        <label for="">Nationality :</label>
+                    </div>
+                    <div class="col-sm-12 col-md-7 col-lg-3 inputDiv" [formGroupName]="i">
+
+                        <input type="text" class="form-control floating-input inputField input-grey place-holder"
+                            formControlName="workerNationality" placeholder="Nationality" [id]="'worker_nationality'+i"
+                            name="worker_nationality" autocomplete="off"
+                            (keyup)="searchNationality_travellers($event, i)"
+                            (blur)="HideDropList_Nationality_travellers($event,i)" appCapitalizeInputOnly
+                            appAlphabetOnly />
+
+                        <div class="nationalityDropDown_travellers nationalityDropDown-div">
+                            <ul class="list-group" *ngIf="showWorkerNationalityDropdown[i] && dropDown_worker[i]!== -1">
+                                <li class="list-group-item dropDown_nationality dropDown_nationality-li"
+                                    *ngFor="let worker_nationality of nationalityListSearchResults">
+                                    <div (click)="selectedNationality_travellers(worker_nationality,i)">
+
+                                        {{worker_nationality.content}} ({{worker_nationality['@code']}})
+                                    </div>
+
+                                </li>
+                            </ul>
+
+                        </div>
+                        <span class="error-text"
+                            *ngIf="isSubmitted && worker.get('workerNationality')?.invalid && !worker.get('workerNationality')?.value">
+                            *Required !
+                        </span>
+
+                        <span class="error-text"
+                            [class.show]="(isSubmitted && worker.get('workerNationality')?.invalid) || (worker_invalidNationality[i] === true && worker.get('workerNationality')?.value)">
+                            <ng-container
+                                *ngIf="worker_invalidNationality[i] === true && worker.get('workerNationality')?.value">
+                                Invalid Nationality!
+                            </ng-container>
+                        </span>
+                    </div>
+
+                </div>
+            </div>
+            <!-- Informational Message -->
+            <div style="text-align: center; color: black; margin-top: 10px;">
+                Please ensure the auto filled particulars are correct before proceeding.
+            </div>
+        </div>
+
+
+        <div class="row justify-content-center contentMarginBottom contentMarginTop">
+            <div class="col-8 col-lg-6 totalPremiumDiv d-flex flex-column align-items-center">
+                <div>
+                    <h4 class="totalAmount">Total Premium : S$ {{totalPremium | number : "1.2-2"}}</h4>
+                    <span>per worker S$ {{premiumPerWorker| number : "1.2-2"}}</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="row contentMarginBottom contentMarginTop justify-content-between">
+            <!-- Previous Button -->
+
+            <div class="col-6  d-flex">
+                <div class="col-3 col-lg-4">
+                    <button class="btn btn-danger btn-sm custom-btn" type="button" (click)="onBack()">
+                        <i class="fa-solid fa-chevron-left"></i>
+                        Previous
+                    </button>
+                </div>
+            </div>
+
+            <div class="col-6 d-flex justify-content-end gap-3">
+                <!-- Exit Button -->
+                <div class="col-5 col-lg-4">
+                    <button class="btn custom-btn-grey btn-sm custom-btn" type="button" (click)="onExit()">
+
+                        Exit
+                    </button>
+                </div>
+
+                <!-- Proceed Button -->
+                <div class=" col-5 col-lg-4">
+                    <button class="btn btn-danger btn-sm custom-btn" type="button" (click)="onNext()">
+                        Proceed
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<app-spinner></app-spinner>
+<app-worker-spinner></app-worker-spinner>

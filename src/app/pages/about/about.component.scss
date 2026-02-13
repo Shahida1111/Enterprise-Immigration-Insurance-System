@@ -1,0 +1,405 @@
+.overlay-black {
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 50;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    opacity: 0.3;
+}
+
+.nav-bar{
+    position: relative;
+    z-index: 52;
+}
+
+.terms{
+    text-align: center;
+    color: white;
+    font-size: 30px;
+    z-index: 200;
+    position: relative;
+    opacity: 0.8;
+  
+}
+
+.points{
+    font-size: 18px;
+    padding-left: 35px;
+}
+h5 {
+  display: flex;
+  align-items: flex-start;
+  margin: 0;
+}
+
+.numbering {
+  margin-right: 0.5rem;
+}
+ul {
+  list-style-type: none; 
+  padding-left: 0; 
+}
+
+// ul .d_points::before {
+//   content: "- ";
+//   color: #000; 
+//   font-weight: bold;
+// padding-left: 25px;
+// }
+
+p {
+  font-size: 12px;
+  margin-bottom: 0px;
+    
+  &.p-2 {
+    font-weight: 500;
+    padding: 0 !important;
+    text-align: end;
+  }
+    
+  &.sumInsuredContent {
+    font-size: 20px;
+  }
+}
+    
+label {
+  font-weight: 500;
+  white-space: pre;
+  padding: 7px 0px;
+  font-size: 20px;
+}
+
+select {
+  background-color: #6a625a;
+  border-color: #6a625a;
+  margin-bottom: 0px;
+  border-radius: 8px;
+  color: #fff;
+}
+
+.contentMarginBottom {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.contentMarginTopBottom {
+  margin: 20px 0px;
+  margin-bottom: 0;
+}
+
+.aboutComponentWrapper {
+  margin-top: 60px;
+  margin-bottom: 70px;
+  position: relative;
+  z-index: 52!important;
+}
+
+.container-wrapper {
+  background-color: rgba(255, 255, 255, 0.7) !important;
+  padding: 40px;
+  border-radius: 8px;
+}
+
+.dropdown-toggle::after {
+  margin-left: 16.255em;
+}
+
+.plan-benefit-btn {
+  background-color: #ed0039;
+  width: 100%;
+  border-radius: 8px;
+  padding: 10px;
+}
+
+.plan-benefit-btn:hover {
+  background-color: #bd002e;
+}
+
+.promocode {
+  margin-top: 74px;
+}
+
+.click-here {
+  color: #cf2327;
+}
+
+.click-here:hover {
+  text-decoration: underline;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.amount {
+  color: #cf2327;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.drop-down {
+  padding: 0px 15rem 4px 18px;
+}
+
+.promo-input {
+  background-color: #6a625a;
+  color: white;
+  border-radius: 8px;
+  height: 38px;
+}
+
+.progress-bar-padding {
+  padding: 41px 46px 39px 46px !important;
+}
+
+.progressBar {
+  height: 4px;
+}
+
+.progress-bar-btn,
+.progress-bar-btn:active {
+  background-color: #696969;
+  border-color: #696969;
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.progress-bar-btn-active,
+.progress-bar-btn-active:active {
+  background-color: #bd002e;
+  border-color: #bd002e;
+  width: 2rem;
+  height: 2rem;
+}
+
+.progress-bar {
+  background-color: #bd002e;
+}
+
+.sliderProgress0 {
+  width: 0%;
+}
+
+.sliderProgress33 {
+  width: 33%;
+}
+
+.sliderProgress66 {
+  width: 66%;
+}
+
+.sliderProgress100 {
+  width: 100%;
+}
+
+.test-p {
+  margin-top: 24px;
+  display: inline-block;
+}
+
+.price {
+  position: absolute;
+  top: 36px;
+  white-space: pre;
+  left: -10px;
+  color: #5b5046;
+  font-weight: 600;
+}
+
+.col-padding {
+  padding: 0;
+  margin-top: 10px;
+}
+
+.infoIcon {
+  font-size: 18px;
+  color: #bd002e;
+  margin: 10px 0px;
+  cursor: pointer;
+}
+
+.note {
+  border: 1px solid red;
+  padding: 22px;
+}
+
+.note p {
+  font-size: 15px;
+  color: #bd002e;
+}
+
+.bold {
+  font-weight: 900;
+}
+
+.start-33 {
+  left: 33% !important;
+}
+
+.start-66 {
+  left: 66% !important;
+}
+
+.error {
+  color: #ed0039;
+  font-size: 12px;
+}
+
+.disabledInput{
+  background-color: #6a625a;
+  border-color: #6a625a;
+  color: #fff !important;
+  text-align: end;
+  cursor: not-allowed;
+}
+.totalPremiumDiv{
+  background-color: #ba172d;
+  border-radius: 8px;
+}
+.totalPremiumDiv span{
+  color: white;
+  padding-left: 10px;
+  font-size: 0.9rem;
+}
+.totalAmount{
+  text-align: center;
+  font-weight: 700;
+  white-space: pre;
+  color: #ffff;
+  padding: 9px 0px;
+  padding-bottom: 0!important;
+  margin-bottom: 0px;
+}
+.criteria{
+margin-bottom: 15px;
+}
+.criteria ul{
+  margin-bottom: 0px;
+  }
+.customSearchInput{
+  background-color: #6a625a;
+  border-color: #6a625a;
+  margin-bottom: 0px;
+  border-radius: 8px;
+  color: #fff;
+}
+
+.dropdownContainer{
+  min-height: 30px;
+  max-height: 200px;
+  background-color: #6a625a!important;
+  border-color: #6a625a;
+  // margin-top: -10px;
+  // border: 1px solid #5D98CC;
+
+  // position: absolute;
+  z-index: 99999;
+
+}
+.radio-box input[type="radio"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  border: 3px solid  #035ba3; /* Grayish yellow outer ring (adjust color as needed) */
+  border-radius: 50%;
+  background-color: white;
+  margin-right: 5px;
+  position: relative;
+  cursor: pointer;
+}
+
+.radio-box input[type="radio"]:checked::before {
+  content: "";
+  display: block;
+  width: 10px;
+  height: 9px;
+  background-color: #035ba3; /* Blue inner circle */
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+
+@media (max-width: 576px) {
+  .aboutComponentWrapper {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  .container-wrapper {
+    padding: 10px;
+  }
+
+  label {
+    font-size: 12px;
+  }
+
+  select {
+    font-size: 12px;
+  }
+
+  .p-2 {
+    font-weight: 500;
+    padding: 0 !important;
+    text-align: center !important;
+    margin-top: 20px;
+  }
+
+  p.sumInsuredContent {
+    font-size: 16px;
+  }
+
+  p.sumInsuredContent span {
+    font-size: 15px;
+  }
+
+  .contentMarginTopBottom {
+    margin: 20px 0px;
+  }
+
+  .progress-bar-btn,
+  .progress-bar-btn:active {
+    width: 1.2rem;
+    height: 1.2rem;
+  }
+
+  .progress-bar-btn-active,
+  .progress-bar-btn-active:active {
+    width: 1.3rem;
+    height: 1.3rem;
+  }
+
+  .price {
+    font-size: 12px;
+  }
+  .infoIcon {
+    margin-left: 20px;
+  }
+
+  .s-none {
+    display: block;
+  }
+}
+
+@media screen and (min-width: 1023px) and (max-width: 1260px) {
+  .plan-benefit-pdn {
+    padding: 0;
+  }
+
+  .promo-m {
+    margin-right: 10px;
+  }
+}
+
+@media (min-width: 760px) and (max-width: 1366px) {
+  .aboutMTop {
+    margin-top: 20px;
+    position: relative !important;
+  }
+}
+
+    
+    

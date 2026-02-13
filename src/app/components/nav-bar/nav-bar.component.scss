@@ -1,0 +1,139 @@
+.JKH-logo {
+    width: 55rem;
+  }
+  
+  .fa-user-color {
+    color    : #ffffff;
+    font-size: 19px;
+  }
+  
+  .intermediaryId {
+    position: relative;
+  }
+  
+  .intermediaryId p {
+    position                 : absolute;
+    right                    : 0px;
+    top                      : 20px;
+    margin-bottom            : 0px;
+    background-color         : rgb(255 255 255 / 50%);
+    padding                  : 10px 20px;
+    border-top-left-radius   : 30px;
+    border-bottom-left-radius: 30px;
+    color                    : #fff;
+  }
+  
+  .intermediaryId p i {
+    margin-right: 5px;
+  }
+  
+  .logo-padding {
+    padding-left: 0 !important;
+  }
+  .productNameDiv{
+    display: flex;
+    align-items: end;
+    justify-content: center;
+  }
+  .productNameDiv h1{
+    color: white;
+    font-weight: bold;
+    font-size: 3rem;
+    text-align: center;  
+    z-index: 200;
+    position: relative;
+    opacity: 1; 
+  }
+
+  .JKH-logo{
+      width: 10rem;
+    }
+
+.logo-wrapper {
+  height: 97px;
+  width: 411%;
+  background: linear-gradient(
+    to right,
+    #ffffff 0%,
+    rgba(255, 255, 255, 0.0) 50%,
+    #035ba3 100%
+  );
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  padding-left: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  
+}
+
+
+
+.logo {
+  width: 10rem;
+}
+
+  @media (max-width: 576px) {
+    .JKH-logo {
+      width: 6rem;
+    }
+  
+    .mobileLogoBg {
+      padding         : 20px 0px;
+      background-color: #035ba3 ;
+    }
+  
+    .mobileLogoWraper {
+      text-align: center;
+    }
+  
+    .fa-user-color {
+      font-size: 12px;
+    }
+  
+    .intermediaryId p {
+      top: -5px;
+    }
+  }
+  
+  @media screen and (min-width: 768px) and (max-width: 912px) and (orientation: portrait) {
+  
+    .JKH-logo
+     {
+     width: 48rem;
+    }
+
+    .productNameDiv h1{
+      font-size: 2.5rem!important;
+    }
+  
+  }
+
+  @media screen and (min-width: 732px) and (max-width: 912px) {
+
+    .productNameDiv h1{
+      font-size: 2.5rem!important;
+    }
+  
+  }
+  @media screen and (min-width: 577px) and (max-width: 732px) {
+
+    .productNameDiv h1{
+      font-size: 2rem!important;
+    }
+  
+  }
+  @media screen and (min-width: 454px) and (max-width: 577px) {
+
+    .productNameDiv h1{
+      font-size: 1.5rem!important;
+    }
+  
+  }
+  @media screen and (min-width: 200px) and (max-width: 454px) {
+
+    .productNameDiv h1{
+      font-size: 1rem!important;
+    }
+  
+  }
+  

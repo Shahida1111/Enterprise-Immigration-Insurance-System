@@ -1,0 +1,140 @@
+.overlay-black {
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 50;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    opacity: 0.3;
+  }
+
+.nav-bar{
+    position: relative;
+    z-index: 52;
+}
+.points{
+  font-size: 18px;
+}
+p {
+  font-size: 12px;
+  margin-bottom: 0px;
+
+  &.p-2 {
+    font-weight: 500;
+    padding: 0 !important;
+    text-align: end;
+  }
+
+  &.sumInsuredContent {
+    font-size: 20px;
+  }
+}
+    .btn-retrieve{
+  height: 39px !important;
+  padding: 5px;
+    }
+label {
+  font-weight: 500;
+  white-space: pre;
+  padding: 7px 0px;
+  font-size: 20px;
+}
+    
+select {
+  margin-bottom: 0px;
+}
+    
+.contentMarginBottom {
+  margin-bottom: 10px;
+}
+
+.contentMarginTop {
+  margin-top: 20px;
+}
+
+.componentWrapper {
+  margin-top: 40px;
+  margin-bottom: 70px;
+  position: relative;
+  z-index: 52!important;
+}
+
+.container-wrapper {
+  background-color: rgba(255, 255, 255, 0.7) !important;
+  padding: 40px;
+  border-radius: 8px;
+}
+
+.subHeader{
+  text-align: center;
+  color: white;
+  font-size: 30px;
+  z-index: 200;
+  position: relative;
+  opacity: 0.8;
+  // -webkit-text-stroke-width: 1px;
+  // -webkit-text-stroke-color: black;
+}
+
+.pl-3 {
+  padding-left: 3rem;
+}
+// .ps-3{
+//  min-width: 16.45rem;
+
+// }
+.uwRemarksText:before {
+  content:"*";
+  color:red;
+}
+
+
+.redStar {
+
+  color:red;
+}
+.errorDiv{
+  background-color: white;
+}
+
+.errorDiv p {
+  color: #ed0039;
+  font-weight: bold;
+}
+
+
+
+
+@media (max-width: 576px) {
+  .componentWrapper {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  .container-wrapper {
+    padding: 10px;
+  }
+
+  label {
+    font-size: 12px;
+  }
+
+  select {
+    font-size: 12px;
+  }
+}
+
+@media (min-width: 760px) and (max-width: 1366px) {
+  .aboutMTop {
+    margin-top: 20px;
+    position: relative !important;
+  }
+}
+
+.readOnlyInput {
+  background-color: #e9ecef; 
+  color: #495057; 
+  border: 1px solid #ced4da; 
+}
+

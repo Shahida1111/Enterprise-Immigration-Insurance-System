@@ -1,0 +1,17 @@
+<div class="modal-header">
+  <h5 id="SaveQuote_h5_">{{ title }}</h5>
+</div>
+<div class="modal-body">
+  <div class="content-wrapper">
+    <div class="row-message">
+      <p id="SaveQuote_p_" style="margin-left: 5px;" [innerHTML]="message"></p>
+    </div>
+  </div>
+
+  <div class="modal-footer padding-right">
+    <button id="SaveQuote_button_Back" type="button " *ngIf="showGoBack" class="btn btn-primary btn-confirm" (click)="goBack()">Go Back</button>
+    <button id="SaveQuote_button_Exit" type="button" *ngIf="showExit" class="btn btn-primary btn-gray" (click)="closePopup()">Exit</button>
+  </div>
+
+  <app-spinner></app-spinner>
+</div>

@@ -1,0 +1,175 @@
+<div class="overlay-black"></div>
+
+<app-nav-bar class="nav-bar"></app-nav-bar>
+
+<h3 class="subHeader">Insured's Information</h3>
+
+<div class="container componentWrapper aboutMTop">
+  <div class="container-wrapper">
+    <!-- Insured Employer -->
+    <div class="row contentMarginBottom">
+      <div class="col-4 col-sm-4 col-md-4">
+        <label for="">Insured Employer :</label>
+      </div>
+
+      <div class="col-4 col-sm-8 col-md-6">
+        <label for="">{{ companyData.name }}</label>
+      </div>
+    </div>
+
+    <!-- UEN -->
+    <div class="row contentMarginBottom">
+      <div class="col-4 col-sm-4 col-md-4">
+        <label for="">UEN :</label>
+      </div>
+
+      <div class="col-4 col-sm-8 col-md-6">
+        <label for="">{{ companyData.uen }}</label>
+      </div>
+    </div>
+
+    <!-- Address -->
+    <div class="row contentMarginBottom">
+      <div class="col-4 col-sm-4 col-md-4">
+        <label for="">Address :</label>
+      </div>
+
+      <div class="col-8 col-sm-8 col-md-6">
+        <label for="">{{ address?.blkhseNo || "" }}{{address.blkhseNo?', ':''}}{{address?.streetName }}</label>
+        <span *ngIf="address?.unitNo || address?.levelNo">
+          <br />
+          <label for="">{{address?.levelNo }}{{address.levelNo?'-':''}}{{address?.unitNo}}</label>
+        </span>
+        <span *ngIf="address?.bldgName">
+          <br />
+          <label for=""
+            >{{ address?.bldgName || "" }}</label
+          >
+        </span>
+        <br /><label for="">Singapore</label>
+        <label for="" class="postal-code">Postal Code :</label>
+        <label for="" class="postal-code2">{{
+          address?.postalCode || "NA"
+        }}</label>
+      </div>
+    </div>
+
+    <div class="row contentMarginBottom">
+      <div class="col-4 col-sm-4 col-md-4">
+        <label for="">Nature of Business :</label>
+      </div>
+
+      <div class="col-8 col-sm-8 col-md-6">
+        <div *ngFor="let item of ssicList; let i = index">
+          <label class="p-top" for="">
+            {{ item?.description ? item?.description : "NA" }}.</label
+          >
+        </div>
+      </div>
+    </div>
+    <form [formGroup]="insuredForm" (ngSubmit)="onNext()">
+      <!-- Mobile Number -->
+      <div class="row contentMarginBottom">
+        <div class="col-4 col-sm-4 col-md-4">
+          <label for="">Mobile Number :</label>
+        </div>
+
+        <div class="col-8 col-sm-8 col-md-4">
+          <input
+            class="form-control"
+            maxlength="8"
+            minlength="8"
+            appNumericOnly
+            formControlName="mobile"
+            required
+          />
+          <span
+            class="error-text"
+            *ngIf="insuredForm.controls['mobile']['errors']?.['required'] && isSubmitted"
+            id="span_details_error10"
+          >
+            *Required !</span
+          >
+          <span
+            class="error-text"
+            *ngIf="insuredForm.controls['mobile']['errors']?.['minlength']?.['requiredLength'] == 8 && isSubmitted"
+            id="span_details_error11"
+            >*Mobile number must be exactly 8 digits !</span
+          >
+        </div>
+      </div>
+
+      <!-- Email Address -->
+      <div class="row contentMarginBottom">
+        <div class="col-4 col-sm-4 col-md-4">
+          <label for="">Email Address:</label>
+        </div>
+
+        <div class="col-8 col-sm-8 col-md-4">
+          <input
+            class="form-control"
+            type="email"
+            name="email"
+            formControlName="email"
+            required
+            autocomplete="off"
+          />
+
+          <span
+            class="error-text pad-left"
+            *ngIf="insuredForm.controls['email']['errors']?.['required'] && isSubmitted"
+          >
+            *Required !</span
+          >
+          <span
+            class="error-text pad-left"
+            *ngIf="insuredForm.controls['email']['errors']?.['email']"
+            >*Invalid Email !</span
+          >
+        </div>
+      </div>
+    </form>
+    <!-- Next and Previous Buttons -->
+    <div
+      class="row contentMarginBottom contentMarginTop justify-content-between mt-110 position-relative"
+      style="z-index: 1000"
+    >
+      <!-- Previous Button -->
+      <div class="col-6 col-sm-4 col-md-3 col-lg-2">
+        <button
+          class="btn btn-danger btn-sm custom-btn"
+          type="button"
+          (click)="onBack()"
+        >
+          <i class="fa-solid fa-chevron-left"></i>
+          Previous
+        </button>
+      </div>
+
+      <!-- Next Button -->
+      <div class="col-6 col-sm-4 col-md-3 col-lg-2">
+        <button
+          class="btn btn-danger btn-sm custom-btn"
+          type="button"
+          (click)="onNext()"
+        >
+          Next
+          <i class="fa-solid fa-chevron-right"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Premiums -->
+    <div class="row justify-content-end contentMarginBottom premiumManDiv">
+      <div class="col-8 col-xs-6 col-lg-4 col-md-5 col-sm-6 totalPremiumDiv">
+        <div>
+          <h4 class="totalAmount">
+            Total Premium : S$ {{ totalPremium | number : "1.2-2" }}
+          </h4>
+          <span>per worker S$ {{ premiumPerWorker | number : "1.2-2" }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-spinner></app-spinner>

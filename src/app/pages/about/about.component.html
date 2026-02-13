@@ -1,0 +1,60 @@
+<div class="overlay-black"></div>
+
+<app-nav-bar class="nav-bar"></app-nav-bar>
+<h3 class="terms">Terms and conditions</h3>
+<div class="container aboutComponentWrapper aboutMTop">
+  <div class="container-wrapper " *ngIf="!onDirect">
+    <div class="row contentMarginBottom">
+      <div class="row">
+        <h3><b>Qualification Criteria as follows: </b></h3>
+      </div>
+      <div class="criteria">
+  
+        <ul >
+          <li class="d_points"  *ngFor="let item of criteriaList; let i = index">{{ item }}</li>
+        </ul>
+      </div>
+      <!-- <div class="row  contentMarginBottom">
+        <p class="points">14 months premium S$ {{premiumData.fourteenMonthPremium | number : "1.2-2"}}</p>
+        <p class="points">26 months premium S$ {{premiumData.twentySixMonthPremium | number : "1.2-2"}} </p>
+
+      </div> -->
+
+      <!-- <div class="row">
+        <div class="col-md-2 col-4 offset-8 offset-md-10 float-end q-select">
+          <select class="form-select float-md-end input-grey select-white-arrow" aria-label="Default select example"
+            id="selectexception" (change)="onSelectChange($event)" [(ngModel)]="selectedOption">
+            <option value="" hidden id="selectexceptionOpt1">Select</option>
+            <option value="Yes" id="selectexceptionOpt2">Agree</option>
+            <option value="No" id="selectexceptionOpt3">Disagree</option>
+          </select>
+          <span *ngIf="showError" id="selectexceptionRQ" class="error-text toDateText">
+            *Required !</span>
+        </div>
+      </div> -->
+    </div>
+
+    <div class="row contentMarginBottom">
+
+    </div>
+
+    <div class="row">
+      <div class="col-md-3 col-6 text-end padding-right">
+        <button class="btn btn-danger custom-btn-grey" type="submit" id="acceptProceed" (click)="onCancel()">
+          <i class="fa-solid fa-xmark"></i>
+          Disagree
+
+        </button>
+      </div>
+      <div class="col-md-3 col-6 offset-md-6 text-end padding-right">
+        <button class="btn btn-danger custom-btn" type="submit" id="acceptProceed" (click)="onProceed()">
+          Agree
+          <i class="fa-solid fa-angle-right arrow-size"></i>
+        </button>
+      </div>
+    </div>
+
+
+  </div>
+</div>
+<app-spinner></app-spinner>

@@ -1,0 +1,48 @@
+
+<div class="modal-header">
+    <h4 id="FWDEmail_h4_" class="modal-title">Payment Link</h4>
+    <span class="cross-span" (click)="exit()">
+    <i id="FWDEmail_i_" type=button class="fa-solid fa-xmark icon-size" ></i>
+    </span>
+</div>
+  <div class="modal-body m-body">
+    <div class="row">
+      <div class="col-12 m-top">
+        <label>{{ payUrl }}</label>
+      </div>
+    </div>
+    <div class="row">
+      <form [formGroup]="emailForm" (ngSubmit)="sendEmail()">
+        <div class="col-12 form-floating mb-3 m-top">
+          <input
+            id="FWDEmail_input_emailAddress1"
+            type="email"
+            class="form-control floating-input inputField pad-left"
+            name="email"
+            placeholder="Email"
+            autocomplete="off"
+            formControlName="email"
+            required
+          />
+          <span class="error-text pad-left" *ngIf="emailForm.controls['email']['errors']?.['required'] && isSubmitted"> *required !</span>
+          <span class="error-text pad-left" *ngIf="emailForm.controls['email']['errors']?.['email']">*Invalid Email !</span>
+          <label id="FWDEmail_label_Email1" class="inputFieldLabel" for="FWDEmail_input_emailAddress1">Email</label>
+        </div>
+      </form>
+    </div>
+  
+    <div class="col-12 modal-footer footer">
+      <div class="col-md-3">
+        <button id="FWDEmail_button_Forward" type="button" class="btn btn-primary btn-confirm" (click)="copy()">Copy</button>
+      </div>
+      <div class="col-md-3 offset-md-3">
+        <button id="FWDEmail_button_Forward" type="button" class="btn btn-primary btn-confirm" (click)="sendEmail()">Forward</button>
+      </div>
+  
+      <div class="col-md-3">
+        <button id="FWDEmail_button_Cancel" type="button" class="btn btn-primary btn-gray" (click)="modal.dismiss('Cross click')">Cancel</button>
+      </div>
+    </div>
+  </div>
+  <app-spinner></app-spinner>
+  
